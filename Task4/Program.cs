@@ -60,40 +60,39 @@ int FindMinCol(int[,] matrix)
     return ColMin;
 }
 
-void InputNewMatrix(int[,] matrix; int a; int b){
-int x = matrix.GetLength(0) - 2;
-int y = matrix.GetLength(1) - 2;
-int[,] tabl = new int[x, y];
-int row = 0;
-int cow = 0;
-for (int i = 0; i < matrix.GetLength(0); i++)
+void InputNewMatrix(int[,] matrix, int a, int b)
 {
-    if (i != a)
+    int x = matrix.GetLength(0) - 1;
+    int y = matrix.GetLength(1) - 1;
+    int[,] tabl = new int[x, y];
+    int row = 0;
+    int col = 0;
+    for (int i = 0; i < matrix.GetLength(0);  i++)
     {
-        for (int j = 0; j < matrix.GetLength(1); j++)
+        if (i != a)
         {
-            if (j != b)
+            for (int j = 0; j < matrix.GetLength(1);  j++)
             {
-                table[row, cow] = matrix[i, j];
-                Console.Write($"{tabl[row, cow]} \t");
-                cow++;
+                if (j != b)
+                {
+                    tabl[row, col] = matrix[i, j];
+                    Console.Write($"{tabl[row, col]} \t");
+                    col++;
+                }
             }
         }
+        row++;
     }
-    row++;
+    Console.WriteLine();
 }
-Console.WriteLine();
-};
 int i = new Random().Next(1, 11);
-int j = new Random().Next(1, 11);
+int j = new Random().Next(3, 11);
 int[,] matrix = new int[i, j];
 InputMatrix(matrix);
 Console.WriteLine("Исходный двумерный массив:");
 PrintMatrix(matrix);
 int MinRow = FindMinRow(matrix);
-Console.WriteLine(MinRow);
 int MinCol = FindMinCol(matrix);
-Console.WriteLine(MinCol);
 Console.WriteLine("Массив после удаления строки и столбца с минимальным элементом:");
 InputNewMatrix(matrix, MinRow, MinCol);
 
