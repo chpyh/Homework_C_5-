@@ -26,8 +26,10 @@ void MoveLinesInMatrix(int[,] matrix)
 {
     int temporaryElement = 0;
     int length = matrix.GetLength(0) - 1;
-    for (int i = 0; i < matrix.GetLength(0); i++)
-    {
+    //for (int i = 0; i < matrix.GetLength(0); i++)
+    //{ - тут внешний цикл не нужен, 
+    //во-первых, он лишний, а в-вторых, в случае, если будет 
+    //четное количество строк, все останется на своих местах.
         for (int j = 0; j < matrix.GetLength(1); j++)
         {
                 temporaryElement = matrix[0, j];
@@ -36,7 +38,7 @@ void MoveLinesInMatrix(int[,] matrix)
             }
 
         }
-    }
+    //}
 int i = new Random().Next(1, 11);
 int j = new Random().Next(1, 11);
 int[,] matrix = new int[i, j];
